@@ -1,3 +1,3 @@
-NAME=mini
+NAME=minitalk
 
 
