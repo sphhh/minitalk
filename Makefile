@@ -34,7 +34,6 @@ libgen:
 all:		$(NAME)
 
 clean:
-			@$(RM) $(SERVER) $(CLIENT)
 			@cd libft && make clean
 			@cd ft_printf && make clean
 			$(info Cleaned 🚮)

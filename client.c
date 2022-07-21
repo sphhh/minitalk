@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 11:23:36 by vipereir          #+#    #+#             */
-/*   Updated: 2022/07/21 14:37:38 by vipereir         ###   ########.fr       */
+/*   Updated: 2022/07/21 15:36:06 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,21 @@
 #include <signal.h> 
 #include <stdlib.h>
 
-char *conversor(int c)
+int *ft_chartobin(int pid, int c)
 {
 	int		i;
-	int		j;
-	char	*bin;
 
-	bin = malloc(sizeof(char) * 9);
-	bin[8] = '\0';
-
-	j = 0;
 	i = 7;
 	while (i >= 0)
 	{
-		bin[j] = ((c & (1 << i)) ? '1' : '0');
+		if (c & (1 << i))
+			kill(pid, SIGUSR1);
+		else
+			kill(pid, SIGUSR2);
+		usleep(10);
 		i--;
-		j++;
 	}
-	return(bin);
+	return (0);
 }
 
 int	main(int argc, char **argv)
@@ -49,7 +46,7 @@ int	main(int argc, char **argv)
 	mesg = argv[2];
 	printf("%s\n", argv[2]);
 	while (*argv[2])
-		ft_printf("%s", conversor(*argv[2]++));
+		ft_chartobin(serv_pid, *argv[2]++);
 	return (0);
 }
 

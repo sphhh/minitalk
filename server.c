@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 10:40:09 by vipereir          #+#    #+#             */
-/*   Updated: 2022/07/21 12:15:51 by vipereir         ###   ########.fr       */
+/*   Updated: 2022/07/21 15:11:35 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ int main(void)
 static void sig_usr(int signo) /* o argumento indica o sinal recebido */
 {
 	if (signo == SIGUSR1)
-		printf("received SIGUSR1\n");
+		write(1, "1", 1);
 	else if (signo == SIGUSR2)
-		printf("received SIGUSR2\n");
+		write(1, "0", 1);
 	else
 	{
 		fprintf(stderr, "received signal %d\n", signo);
