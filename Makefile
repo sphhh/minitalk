@@ -20,7 +20,6 @@ LIBFT_PATH	= libft/libft.a
 
 PRINTF_PATH	= ft_printf/libftprintf.a
 
-
 $(NAME):	libgen $(LIBFT_PATH) $(PRINTF_PATH)
 			@$(CC) $(CFLAGS) $(SRC_CLIENT) $(LIBFT_PATH) $(PRINTF_PATH) -o $(CLIENT)
 				@$(CC) $(CFLAGS) $(SRC_SERVER) $(LIBFT_PATH) $(PRINTF_PATH) -o $(SERVER)
