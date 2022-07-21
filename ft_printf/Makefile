@@ -7,21 +7,24 @@ OBJ			= $(SRC:.c=.o)
 
 CC			= cc
 
+.c.o:
+			@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+
 RM			= rm -f
 
 CFLAGS		= -Wall -Wextra -Werror
 
 $(NAME):	$(OBJ)
-			$(CC) $(CFLAGS) -c $(SRC)
-				ar rcs $(NAME) $(OBJ)
+			@$(CC) $(CFLAGS) -c $(SRC)
+				@ar rcs $(NAME) $(OBJ)
 
 all:		$(NAME)
 
 clean:
-			$(RM) $(OBJ)
+			@$(RM) $(OBJ)
 
 fclean:		clean
-			$(RM) $(NAME)
+			@$(RM) $(NAME)
 
 re:			fclean all
 

@@ -57,25 +57,25 @@ RM			= rm -f
 CFLAGS		= -Wall -Wextra -Werror
 
 .c.o:
-			$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+			@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
 $(NAME):	$(OBJ)
-			$(CC) $(CFLAGS) -c $(SRC)
-				ar rcs $(NAME) $(OBJ)
+			@$(CC) $(CFLAGS) -c $(SRC)
+				@ar rcs $(NAME) $(OBJ)
 
 all:		$(NAME)
 
 bonus:		$(OBJ_B)
-			$(CC) $(CFLAGS) -c $(SRC_B)
-				ar rcs $(NAME) $(OBJ_B)
+			@$(CC) $(CFLAGS) -c $(SRC_B)
+				@ar rcs $(NAME) $(OBJ_B)
 
 
 clean:
-			$(RM) $(OBJ)
-			$(RM) $(OBJ_B)
+			@$(RM) $(OBJ)
+			@$(RM) $(OBJ_B)
 
 fclean:		clean
-			$(RM) $(NAME)
+			@$(RM) $(NAME)
 
 re:			fclean all
 
