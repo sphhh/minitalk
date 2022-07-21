@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 10:40:09 by vipereir          #+#    #+#             */
-/*   Updated: 2022/07/21 15:11:35 by vipereir         ###   ########.fr       */
+/*   Updated: 2022/07/21 15:58:57 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,54 +15,27 @@
 #include "./ft_printf/ft_printf.h"
 #include "./libft/libft.h"
 #include <signal.h>
-/*
-void sig_handler(int signum)
-{
-	ft_printf("signum: %i\n", signum);
-}
+
+void sig_handler(int signum);
 
 int	main(void)
 {
 	int	pid;
 
 	signal(SIGUSR1, *sig_handler);
+	signal(SIGUSR2, *sig_handler);
 	pid = getpid();
 	ft_printf("pid: %i\n", pid);
-	pause();
+	while (1)
+		pause();
 	return (0);
 }
-*/
 
-
-static void sig_usr(int); /* o mesmo handler para os 2 sinais */
-int main(void)
+void sig_handler(int signum)
 {
-	pid_t	pid;
-	pid = getpid();
-	ft_printf("pid: %i\n", pid);
-	if (signal(SIGUSR1, sig_usr) == SIG_ERR) 
-	{
-		fprintf(stderr, "can't catch SIGUSR1\n");
-		exit(1);
-	}
-	if (signal(SIGUSR2, sig_usr) == SIG_ERR) 
-	{
-		fprintf(stderr, "can't catch SIGUSR2\n");
-		exit(1);
-	}
-	for(;;)
-		pause();
-}
-static void sig_usr(int signo) /* o argumento indica o sinal recebido */
-{
-	if (signo == SIGUSR1)
+	if (signum == SIGUSR1)
 		write(1, "1", 1);
-	else if (signo == SIGUSR2)
+	else if (signum == SIGUSR2)
 		write(1, "0", 1);
-	else
-	{
-		fprintf(stderr, "received signal %d\n", signo);
-		exit(2);
-	}
 	return;
 }
