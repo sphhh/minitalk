@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 10:40:09 by vipereir          #+#    #+#             */
-/*   Updated: 2022/07/21 18:30:06 by vipereir         ###   ########.fr       */
+/*   Updated: 2022/07/21 19:08:47 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <signal.h>
 
 void sig_handler(int signum);
-int	bin_to_dec(char *bin);
+int	bin_to_dec(const char *bin);
 
 char	bit;
 
@@ -25,9 +25,9 @@ int	main(void)
 {
 	int		i;
 	int		pid;
-	char	byte[9];
+	char	*byte;
 
-	byte[8] = '\0';
+
 	i = 0;
 	signal(SIGUSR1, *sig_handler);
 	signal(SIGUSR2, *sig_handler);
@@ -35,6 +35,8 @@ int	main(void)
 	ft_printf("pid: %i\n", pid);
 	while (1)
 	{
+		byte = malloc(sizeof(char) * 9);
+		byte[8] = '\0';
 		i = 0;
 		while (i < 8)
 		{
@@ -42,7 +44,8 @@ int	main(void)
 			byte[i] = bit;
 			i++;
 		}
-		printf("%c\n", bin_to_dec(byte));
+		ft_putchar_fd(bin_to_dec(byte), 1);
+		free(byte);
 	}
 	return (0);
 }
@@ -56,7 +59,7 @@ void sig_handler(int signum)
 	return ;
 }
 
-int	bin_to_dec(char *bin)
+int	bin_to_dec(const char *bin)
 {
 	int	dec;
 	int	i;
@@ -66,12 +69,13 @@ int	bin_to_dec(char *bin)
 	pow = 1;
 	rem = 0;
 	dec = 0;
-	i = 8;
-	while (i > 0)
+	i = 7;
+	while (i >= 0)
 	{
-		rem = bin[i--] - 48;
+		rem = bin[i] - 48;
 		dec = dec + rem * pow;
 		pow = pow * 2;
+		i--;
 	}
 	return (dec);
 }
