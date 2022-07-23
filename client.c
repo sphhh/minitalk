@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 11:23:36 by vipereir          #+#    #+#             */
-/*   Updated: 2022/07/23 13:51:49 by sphh             ###   ########.fr       */
+/*   Updated: 2022/07/23 14:27:06 by sphh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,11 @@ int *ft_chartobin(int pid, int c)
 int	main(int argc, char **argv)
 {
 	int		serv_pid;
+	char		*pid_check;
 
+	// coditions check;
+	// criar uma ft_check conditions
+	pid_check = argv[1];	
 	if (argc == 1)
 	{
 		ft_printf("You forgot the server PID!\n");
@@ -48,6 +52,15 @@ int	main(int argc, char **argv)
 		ft_printf("You forgot the MESSAGE!\n");
 	       	return (0);	
 	}
+	while(*pid_check)	
+	{
+		if (ft_isdigit(*pid_check) == 0)
+		{
+			ft_printf("The PID should only have DIGITS!\n");
+			return (0);
+		}
+		pid_check++;
+	}	
 	serv_pid = ft_atoi(argv[1]);
 	while (*argv[2])
 		ft_chartobin(serv_pid, *argv[2]++);
