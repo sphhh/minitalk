@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 11:23:36 by vipereir          #+#    #+#             */
-/*   Updated: 2022/07/23 14:27:06 by sphh             ###   ########.fr       */
+/*   Updated: 2022/07/23 14:57:48 by sphh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	main(int argc, char **argv)
 {
 	int		serv_pid;
 	char		*pid_check;
+	char		*client_pid;
 
 	// coditions check;
 	// criar uma ft_check conditions
@@ -61,7 +62,12 @@ int	main(int argc, char **argv)
 		}
 		pid_check++;
 	}	
+	client_pid = ft_itoa(getpid());
+	ft_printf("%s", client_pid);	
 	serv_pid = ft_atoi(argv[1]);
+	while(*client_pid)
+		ft_chartobin(serv_pid, *client_pid++);
+	ft_chartobin(serv_pid, '$');
 	while (*argv[2])
 		ft_chartobin(serv_pid, *argv[2]++);
 	return (0);
