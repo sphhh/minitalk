@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 10:40:09 by vipereir          #+#    #+#             */
-/*   Updated: 2022/07/23 20:58:08 by sphh             ###   ########.fr       */
+/*   Updated: 2022/07/23 21:29:26 by sphh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,6 @@ void sig_handler(int signum)
 		}
 		client_pid = ft_strjoin(client_pid, bin_to_dec_str(byte));
 	}
-	if (key == 1)
-		kill(ft_atoi(client_pid), SIGUSR1);
 	return ;
 }
 

@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 11:23:36 by vipereir          #+#    #+#             */
-/*   Updated: 2022/07/23 21:23:26 by sphh             ###   ########.fr       */
+/*   Updated: 2022/07/23 21:28:08 by sphh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,31 +40,6 @@ int *ft_chartobin(int pid, int c)
 	}
 	return (0);
 }
-int *ft_chartobin_pause(int pid, int c)
-{
-	int		i;
-
-	i = 7;
-	while (i >= 0)
-	{
-		if (c & (1 << i))
-		{
-			kill(pid, SIGUSR1);
-			pause();
-		}
-		else
-		{
-			kill(pid, SIGUSR2);
-			pause();
-		}
-		usleep(200);
-		i--;
-		//	usleep(200);
-	}
-	return (0);
-}
-
-
 
 int	main(int argc, char **argv)
 {
@@ -102,7 +77,7 @@ int	main(int argc, char **argv)
 		ft_chartobin(serv_pid, *client_pid++);
 	ft_chartobin(serv_pid, '$');
 	while (*argv[2])
-		ft_chartobin_pause(serv_pid, *argv[2]++);
+		ft_chartobin(serv_pid, *argv[2]++);
 	return (0);
 }
 
