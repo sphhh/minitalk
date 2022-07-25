@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 10:40:09 by vipereir          #+#    #+#             */
-/*   Updated: 2022/07/25 14:34:12 by vipereir         ###   ########.fr       */
+/*   Updated: 2022/07/25 15:08:20 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,16 @@ int	bin_to_dec(const char *bin);
 
 int	main(void)
 {
-	int		pid;
-//	struct	sigaction act;
+	pid_t	pid;
+	struct	sigaction action;
 
-	signal(SIGUSR1, *sig_handler);
-	signal(SIGUSR2, *sig_handler);
+	action.sa_handler = sig_handler;
+	sigemptyset(&action.sa_mask);
+	action.sa_flags = 0;
+	sigaction(SIGUSR1, &action, NULL);
+	sigaction(SIGUSR2, &action, NULL);
 	pid = getpid();
 	ft_printf("pid: %i\n", pid);
-
 	while (1)
 		pause();
 	return (0);
