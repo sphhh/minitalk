@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 10:40:09 by vipereir          #+#    #+#             */
-/*   Updated: 2022/07/25 15:08:20 by vipereir         ###   ########.fr       */
+/*   Updated: 2022/07/25 15:28:50 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "./libft/libft.h"
 #include <signal.h>
 
-void sig_handler(int signum);
+void sig_handler(int signum, siginfo_t *info);
 int	bin_to_dec(const char *bin);
 
 int	main(void)
@@ -24,7 +24,7 @@ int	main(void)
 	pid_t	pid;
 	struct	sigaction action;
 
-	action.sa_handler = sig_handler;
+	action.sa_handler = (void *)sig_handler;
 	sigemptyset(&action.sa_mask);
 	action.sa_flags = 0;
 	sigaction(SIGUSR1, &action, NULL);
@@ -36,11 +36,13 @@ int	main(void)
 	return (0);
 }
 
-void sig_handler(int signum)
+void sig_handler(int signum, siginfo_t *info)
 {
 	static char	*byte;
 	static int	i;
 
+//	ft_printf("%i\n", info->si_pid);
+	return ;
 	if (i == 0)
 	{
 		byte = malloc(sizeof(char) * 9);
