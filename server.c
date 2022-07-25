@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 10:40:09 by vipereir          #+#    #+#             */
-/*   Updated: 2022/07/25 15:28:50 by vipereir         ###   ########.fr       */
+/*   Updated: 2022/07/25 16:39:08 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@ void sig_handler(int signum, siginfo_t *info)
 	static char	*byte;
 	static int	i;
 
-//	ft_printf("%i\n", info->si_pid);
-	return ;
+	if(info)
 	if (i == 0)
 	{
 		byte = malloc(sizeof(char) * 9);
@@ -58,6 +57,8 @@ void sig_handler(int signum, siginfo_t *info)
 		free(byte);
 		i = 0;
 	}
+	usleep(100);
+	kill(info->si_pid, SIGUSR1);
 	return ;
 }
 
@@ -65,17 +66,14 @@ int	bin_to_dec(const char *bin)
 {
 	int	dec;
 	int	i;
-	int	rem;
 	int	pow;
 
 	pow = 1;
-	rem = 0;
 	dec = 0;
 	i = 7;
 	while (i >= 0)
 	{
-		rem = bin[i] - 48;
-		dec = dec + rem * pow;
+		dec = dec + (bin[i] - 48) * pow;
 		pow = pow * 2;
 		i--;
 	}

@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 11:23:36 by vipereir          #+#    #+#             */
-/*   Updated: 2022/07/25 15:29:04 by vipereir         ###   ########.fr       */
+/*   Updated: 2022/07/25 16:46:44 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ int *ft_chartobin(int pid, int c)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(500);
+		pause();
+		usleep(100);
 		i--;
 	}
 	return (0);
@@ -69,6 +70,12 @@ int	main(int argc, char **argv)
 {
 	int		serv_pid;
 	char	*pid_check;
+	struct	sigaction action;
+
+	action.sa_handler = (void *)sig_handler;
+	sigemptyset(&action.sa_mask);
+	action.sa_flags = 0;
+	sigaction(SIGUSR1, &action, NULL);
 
 	if (ft_check(argc, argv[1]) == 0)
 		return (0);
