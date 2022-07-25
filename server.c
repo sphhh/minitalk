@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 10:40:09 by vipereir          #+#    #+#             */
-/*   Updated: 2022/07/25 13:07:17 by vipereir         ###   ########.fr       */
+/*   Updated: 2022/07/25 14:34:12 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ int	bin_to_dec(const char *bin);
 int	main(void)
 {
 	int		pid;
-	struct	sigaction act;
+//	struct	sigaction act;
 
-	sigaction(SIGUSR1, *sig_handler);
-	sigaction(SIGUSR2, *sig_handler);
+	signal(SIGUSR1, *sig_handler);
+	signal(SIGUSR2, *sig_handler);
 	pid = getpid();
 	ft_printf("pid: %i\n", pid);
 
@@ -36,21 +36,23 @@ int	main(void)
 
 void sig_handler(int signum)
 {
-	static char	byte[9];
+	static char	*byte;
 	static int	i;
-	static char	*client_pid;
 
-	byte[8] = '\0';
-	if (!client_pid)
-		client_pid = ft_strdup("\0");
+	if (i == 0)
+	{
+		byte = malloc(sizeof(char) * 9);
+		byte[8] = '\0';
+	}
 	if (signum == SIGUSR1)
 		byte[i++] = '1';
 	else if (signum == SIGUSR2)
 		byte[i++] = '0';
 	if (i == 8)
 	{
-		i = 0;
 		ft_putchar_fd(bin_to_dec(byte), 1);
+		free(byte);
+		i = 0;
 	}
 	return ;
 }
