@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 10:40:09 by vipereir          #+#    #+#             */
-/*   Updated: 2022/07/25 17:06:01 by vipereir         ###   ########.fr       */
+/*   Updated: 2022/07/25 17:44:24 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	sig_handler(int signum, siginfo_t *info)
 		free(byte);
 		i = 0;
 	}
-	usleep(100);
+	usleep(150);
 	kill(info->si_pid, SIGUSR1);
 	return ;
 }
