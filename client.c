@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 11:23:36 by vipereir          #+#    #+#             */
-/*   Updated: 2022/07/25 16:46:44 by vipereir         ###   ########.fr       */
+/*   Updated: 2022/07/25 17:04:10 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@
 #include <signal.h> 
 #include <stdlib.h>
 
-void sig_handler(int signum)
+void	sig_handler(int signum)
 {
 	if (signum == SIGUSR1)
 		return ;
 	return ;
 }
 
-int *ft_chartobin(int pid, int c)
+int	*ft_chartobin(int pid, int c)
 {
-	int		i;
+	int	i;
 
 	i = 7;
 	while (i >= 0)
@@ -47,14 +47,14 @@ int	ft_check(int argc, char *pid_check)
 	if (argc == 1)
 	{
 		ft_printf("You forgot the server PID!\n");
-		return(0);
+		return (0);
 	}
 	else if (argc == 2)
 	{
 		ft_printf("You forgot the MESSAGE!\n");
-			return (0);
+		return (0);
 	}
-	while(*pid_check)
+	while (*pid_check)
 	{
 		if (ft_isdigit(*pid_check) == 0)
 		{
@@ -63,20 +63,19 @@ int	ft_check(int argc, char *pid_check)
 		}
 		pid_check++;
 	}
-	return(1);
+	return (1);
 }
 
 int	main(int argc, char **argv)
 {
-	int		serv_pid;
-	char	*pid_check;
-	struct	sigaction action;
+	int					serv_pid;
+	char				*pid_check;
+	struct sigaction	action;
 
 	action.sa_handler = (void *)sig_handler;
 	sigemptyset(&action.sa_mask);
 	action.sa_flags = 0;
 	sigaction(SIGUSR1, &action, NULL);
-
 	if (ft_check(argc, argv[1]) == 0)
 		return (0);
 	signal(SIGUSR1, *sig_handler);
