@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 11:23:36 by vipereir          #+#    #+#             */
-/*   Updated: 2022/07/26 12:17:28 by vipereir         ###   ########.fr       */
+/*   Updated: 2022/07/26 12:49:16 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@
 
 void	sig_handler(int signum)
 {
-	static int	c;
 	if (signum == SIGUSR1)
-		ft_printf("%i\n", c++);
-//		return ;
+		return ;
 	return ;
 }
 
@@ -38,7 +36,7 @@ int	*ft_chartobin(int pid, int c)
 		else
 			kill(pid, SIGUSR2);
 		pause();
-		usleep(222);
+		usleep(150);
 		i--;
 	}
 	return (0);
