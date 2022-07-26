@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 10:40:09 by vipereir          #+#    #+#             */
-/*   Updated: 2022/07/26 15:21:25 by vipereir         ###   ########.fr       */
+/*   Updated: 2022/07/26 17:01:33 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,23 @@ void	sig_handler(int signum, siginfo_t *info)
 	static int	byte;
 	static int	i;
 
+//	byte = byte | 1;
+//	byte = byte << 1;
 	if (signum == SIGUSR1)
 	{
+		byte = byte << 1;
 		byte = byte | 1;
 		i++;
 	}
 	else if (signum == SIGUSR2)
 	{
 		byte = byte << 1;
+		i++;
 	}
-	if (i == 7)
+	if (i == 8)
 	{
-		ft_putchar_fd(byte, 1);
 		i = 0;
+		write(1, &byte, 1);
 		byte = 0;
 	}
 	usleep(1000);
@@ -61,6 +65,7 @@ void	sig_handler(int signum, siginfo_t *info)
 	return ;
 }
 
+/*
 int	ft_bin_to_dec(const char *bin)
 {
 	int	dec;
@@ -78,7 +83,7 @@ int	ft_bin_to_dec(const char *bin)
 	}
 	return (dec);
 }
-
+*/
 /*
 int	ft_bin_to_dec(const char *bin)
 {
