@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 10:40:09 by vipereir          #+#    #+#             */
-/*   Updated: 2022/07/25 17:44:24 by vipereir         ###   ########.fr       */
+/*   Updated: 2022/07/26 10:03:54 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <signal.h>
 
 void	sig_handler(int signum, siginfo_t *info);
-int		bin_to_dec(const char *bin);
+int		ft_bin_to_dec(const char *bin);
 
 int	main(void)
 {
@@ -52,7 +52,7 @@ void	sig_handler(int signum, siginfo_t *info)
 		byte[i++] = '0';
 	if (i == 8)
 	{
-		ft_putchar_fd(bin_to_dec(byte), 1);
+		ft_putchar_fd(ft_bin_to_dec(byte), 1);
 		free(byte);
 		i = 0;
 	}
@@ -61,7 +61,7 @@ void	sig_handler(int signum, siginfo_t *info)
 	return ;
 }
 
-int	bin_to_dec(const char *bin)
+int	ft_bin_to_dec(const char *bin)
 {
 	int	dec;
 	int	i;
@@ -77,4 +77,20 @@ int	bin_to_dec(const char *bin)
 		i--;
 	}
 	return (dec);
+}
+
+int	ft_bin_to_dec_bit(const char *bin)
+{
+	static int	c;
+	static int	i;
+
+	i = 7;
+	while(*bin)
+	{
+		if (*bin == '1')
+			c = c | 1 << i;
+		i--;
+		bin++;
+	}
+	return (c);
 }
