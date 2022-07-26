@@ -6,15 +6,14 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 11:23:36 by vipereir          #+#    #+#             */
-/*   Updated: 2022/07/26 12:49:16 by vipereir         ###   ########.fr       */
+/*   Updated: 2022/07/26 13:14:20 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
 #include "./ft_printf/ft_printf.h"
 #include "./libft/libft.h"
-#include <signal.h> 
+#include <signal.h>
 #include <stdlib.h>
 
 void	sig_handler(int signum)
@@ -68,7 +67,7 @@ int	ft_check(int argc, char *pid_check)
 
 int	main(int argc, char **argv)
 {
-	pid_t					serv_pid;
+	pid_t				serv_pid;
 	char				*pid_check;
 	struct sigaction	action;
 
