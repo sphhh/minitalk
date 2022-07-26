@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 10:40:09 by vipereir          #+#    #+#             */
-/*   Updated: 2022/07/26 10:03:54 by vipereir         ###   ########.fr       */
+/*   Updated: 2022/07/26 10:12:56 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	sig_handler(int signum, siginfo_t *info)
 	return ;
 }
 
+
 int	ft_bin_to_dec(const char *bin)
 {
 	int	dec;
@@ -79,11 +80,13 @@ int	ft_bin_to_dec(const char *bin)
 	return (dec);
 }
 
-int	ft_bin_to_dec_bit(const char *bin)
+/*
+int	ft_bin_to_dec(const char *bin)
 {
-	static int	c;
-	static int	i;
+	int	c;
+	int	i;
 
+	c = 0;
 	i = 7;
 	while(*bin)
 	{
@@ -93,4 +96,4 @@ int	ft_bin_to_dec_bit(const char *bin)
 		bin++;
 	}
 	return (c);
-}
+}*/
