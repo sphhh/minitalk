@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 11:23:36 by vipereir          #+#    #+#             */
-/*   Updated: 2022/07/27 08:19:15 by vipereir         ###   ########.fr       */
+/*   Updated: 2022/07/27 08:49:47 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "./ft_printf/ft_printf.h"
 #include "./libft/libft.h"
 #include <signal.h>
-#include <stdlib.h>
 
 void	sig_handler(int signum)
 {
