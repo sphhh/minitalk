@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 11:23:36 by vipereir          #+#    #+#             */
-/*   Updated: 2022/07/26 17:04:33 by vipereir         ###   ########.fr       */
+/*   Updated: 2022/07/27 08:19:15 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	*ft_chartobin(int pid, int c)
 		else
 			kill(pid, SIGUSR2);
 		pause();
-		usleep(100);
+		usleep(250);
 		i--;
 	}
 	return (0);
