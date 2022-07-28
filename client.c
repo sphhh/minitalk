@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 11:23:36 by vipereir          #+#    #+#             */
-/*   Updated: 2022/07/27 08:49:47 by vipereir         ###   ########.fr       */
+/*   Updated: 2022/07/28 13:59:01 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ void	sig_handler(int signum)
 {
 	if (signum == SIGUSR1)
 		return ;
+	else if (signum == SIGUSR2)
+		write(1, "Received\n", 9);
+//		return ;
 	return ;
 }
 
@@ -74,6 +77,7 @@ int	main(int argc, char **argv)
 	sigemptyset(&action.sa_mask);
 	action.sa_flags = 0;
 	sigaction(SIGUSR1, &action, NULL);
+	sigaction(SIGUSR2, &action, NULL);
 	if (ft_check(argc, argv[1]) == 0)
 		return (0);
 	signal(SIGUSR1, *sig_handler);
@@ -81,5 +85,7 @@ int	main(int argc, char **argv)
 	serv_pid = ft_atoi(argv[1]);
 	while (*argv[2])
 		ft_chartobin(serv_pid, *argv[2]++);
+	if (*argv[2] == '\0')
+		ft_chartobin(serv_pid, *argv[2]);
 	return (0);
 }
