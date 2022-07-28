@@ -18,7 +18,7 @@ CFLAGS		= -Wall -Wextra -Werror
 
 LIBFT_PATH	= libft/libft.a
 
-$(NAME):	libgen $(LIBFT_PATH) $(PRINTF_PATH)
+$(NAME):	libgen
 			@$(CC) $(CFLAGS) $(SRC_CLIENT) $(LIBFT_PATH) -o $(CLIENT)
 				@$(CC)  $(CFLAGS) $(SRC_SERVER) $(LIBFT_PATH) -o $(SERVER)
 					$(info done ✅)
@@ -26,7 +26,6 @@ $(NAME):	libgen $(LIBFT_PATH) $(PRINTF_PATH)
 libgen:
 			$(info compiling ⌛︎)
 			@cd libft && make
-
 
 all:		$(NAME)
 
