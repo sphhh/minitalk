@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 11:23:36 by vipereir          #+#    #+#             */
-/*   Updated: 2022/07/28 13:59:01 by vipereir         ###   ########.fr       */
+/*   Updated: 2022/07/28 14:36:34 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	sig_handler(int signum)
 		return ;
 	else if (signum == SIGUSR2)
 		write(1, "Received\n", 9);
-//		return ;
 	return ;
 }
 
