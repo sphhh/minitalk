@@ -6,12 +6,11 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 10:40:09 by vipereir          #+#    #+#             */
-/*   Updated: 2022/07/28 13:53:28 by vipereir         ###   ########.fr       */
+/*   Updated: 2022/07/28 15:43:33 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include "./ft_printf/ft_printf.h"
 #include "./libft/libft.h"
 #include <signal.h>
 

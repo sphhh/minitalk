@@ -33,7 +33,15 @@ SRC			= ft_isalnum.c\
 			  ft_split.c\
 			  ft_strjoin.c\
 			  ft_strmapi.c\
-			  ft_strtrim.c
+			  ft_strtrim.c\
+			  ft_printf.c\
+			  ft_putchar_print.c\
+			  ft_putstr_print.c\
+			  ft_putnbr_print.c\
+			  ft_putunbr_print.c\
+			  ft_hex_print.c\
+			  ft_pointeraddress_print.c
+
 
 SRC_B		= ft_lstnew_bonus.c\
 			  ft_lstadd_front_bonus.c\
