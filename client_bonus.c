@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:36:35 by vipereir          #+#    #+#             */
-/*   Updated: 2022/08/01 10:16:26 by vipereir         ###   ########.fr       */
+/*   Updated: 2022/08/03 11:34:18 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ int	ft_check(int argc, char *pid_check)
 int	main(int argc, char **argv)
 {
 	pid_t				serv_pid;
-	char				*pid_check;
 	struct sigaction	action;
 
 	action.sa_handler = (void *)sig_handler;
@@ -78,8 +77,6 @@ int	main(int argc, char **argv)
 	sigaction(SIGUSR2, &action, NULL);
 	if (ft_check(argc, argv[1]) == 0)
 		return (0);
-	signal(SIGUSR1, *sig_handler);
-	pid_check = argv[1];
 	serv_pid = ft_atoi(argv[1]);
 	while (*argv[2])
 		ft_chartobin(serv_pid, *argv[2]++);

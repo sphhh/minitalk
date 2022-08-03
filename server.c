@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 10:40:09 by vipereir          #+#    #+#             */
-/*   Updated: 2022/08/03 09:22:51 by vipereir         ###   ########.fr       */
+/*   Updated: 2022/08/03 11:57:35 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,23 +39,17 @@ void	sig_handler(int signum, siginfo_t *info)
 	static int	byte;
 	static int	i;
 
+	if (signum == SIGUSR2 || signum == SIGUSR1)
+		byte <<= 1;
 	if (signum == SIGUSR1)
-	{
-		byte = byte << 1;
-		byte = byte | 1;
-		i++;
-	}
-	else if (signum == SIGUSR2)
-	{
-		byte = byte << 1;
-		i++;
-	}
+		byte |= 1;
+	i++;
 	if (i == 8)
 	{
-		i = 0;
 		write(1, &byte, 1);
 		if (byte == 0)
 			kill(info->si_pid, SIGUSR2);
+		i = 0;
 		byte = 0;
 	}
 	usleep(200);
