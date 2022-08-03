@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 10:40:09 by vipereir          #+#    #+#             */
-/*   Updated: 2022/07/29 10:08:56 by vipereir         ###   ########.fr       */
+/*   Updated: 2022/08/03 09:22:51 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(void)
 
 	action.sa_handler = (void *)sig_handler;
 	sigemptyset(&action.sa_mask);
-	action.sa_flags = 0;
+	action.sa_flags = SA_SIGINFO;
 	sigaction(SIGUSR1, &action, NULL);
 	sigaction(SIGUSR2, &action, NULL);
 	pid = getpid();
