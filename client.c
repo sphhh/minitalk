@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:36:35 by vipereir          #+#    #+#             */
-/*   Updated: 2022/08/03 13:10:48 by vipereir         ###   ########.fr       */
+/*   Updated: 2022/08/08 10:09:53 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	main(int argc, char **argv)
 
 	action.sa_handler = (void *)sig_handler;
 	sigemptyset(&action.sa_mask);
-	action.sa_flags = SA_RESTART;
+	action.sa_flags = 0;
 	sigaction(SIGUSR1, &action, NULL);
 	sigaction(SIGUSR2, &action, NULL);
 	if (ft_check(argc, argv[1]) == 0)
